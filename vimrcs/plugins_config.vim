@@ -80,6 +80,9 @@ let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
+"autocmd VimEnter * NERDTree
+"autocmd BufEnter * NERDTreeMirror
+"autocmd VimEnter * wincmd w
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -167,3 +170,27 @@ nnoremap <silent> <leader>l :call SyntasticCheckCoffeescript()<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_enabled=0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Cscope
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("cscope")
+	set csprg=/usr/local/bin/cscope
+	set csto=1
+	set cst
+	set nocsverb
+	" add any database in current directory
+	if filereadable("cscope.out")
+	    cs add cscope.out
+	" else add database pointed to by environment
+	elseif $CSCOPE_DB != ""
+	    cs add $CSCOPE_DB
+	endif
+	set csverb
+endif
+
+map <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+map <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+map <leader>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+map <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
