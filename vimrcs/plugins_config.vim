@@ -83,6 +83,8 @@ map <leader>nf :NERDTreeFind<cr>
 "autocmd VimEnter * NERDTree
 "autocmd BufEnter * NERDTreeMirror
 "autocmd VimEnter * wincmd w
+noremap <F3> :NERDTreeToggle<cr>
+noremap <F2> :Tlist<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -152,8 +154,10 @@ let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_javascript_checkers = ['jshint']
 
 " Go
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 2
 let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
+
+let g:syntastic_always_populate_loc_list = 0
 
 " Custom CoffeeScript SyntasticCheck
 func! SyntasticCheckCoffeescript()
@@ -190,7 +194,7 @@ if has("cscope")
 	set csverb
 endif
 
-map <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-map <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-map <leader>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-map <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+"noremap <silent> g :cs find g <C-R>=expand("<cword>")<CR><CR>
+"noremap <silent>1 :cs find s <C-R>=expand("<cword>")<CR><CR>
+"noremap <silent> t :cs find t <C-R>=expand("<cword>")<CR><CR>
+"noremap <silent>c :cs find c <C-R>=expand("<cword>")<CR><CR>
