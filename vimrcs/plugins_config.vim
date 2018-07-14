@@ -46,7 +46,7 @@ map <leader>j :CtrlP<cr>
 map <c-b> :CtrlPBuffer<cr>
 
 let g:ctrlp_max_height = 20
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee|^\.svn'
 
 
 """"""""""""""""""""""""""""""
@@ -84,7 +84,9 @@ map <leader>nf :NERDTreeFind<cr>
 "autocmd BufEnter * NERDTreeMirror
 "autocmd VimEnter * wincmd w
 noremap <F3> :NERDTreeToggle<cr>
-noremap <F2> :Tlist<cr>
+noremap <F2> :TagbarToggle<cr>
+let g:tagbar_left = 1
+let g:tagbar_autofocus = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -180,7 +182,7 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 " => Cscope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("cscope")
-	set csprg=/usr/local/bin/cscope
+	" set csprg=/usr/local/bin/cscope
 	set csto=1
 	set cst
 	set nocsverb
@@ -192,6 +194,14 @@ if has("cscope")
 	    cs add $CSCOPE_DB
 	endif
 	set csverb
+    nmap <leader>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <leader>i :scs find i <C-R>=expand("<cfile>")<CR><CR>
+    nmap <leader>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 endif
 
 "noremap <silent> g :cs find g <C-R>=expand("<cword>")<CR><CR>
